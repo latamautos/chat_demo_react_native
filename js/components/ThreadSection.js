@@ -125,7 +125,7 @@ var ThreadSection = React.createClass({
         var treatedThread = this._getTreatedThread(rowData);
         return (
 
-            <TouchableHighlight onHideUnderlay={(rowData) =>this._goToThread(rowData)}  underlayColor="#e5e5e5">
+            <TouchableHighlight onPress={(rowData) =>this._goToThread(rowData)} underlayColor="#e5e5e5">
                 <View>
                     <View style={styles.threadItem}>
                         <View style={styles.threadStatus}>
@@ -181,7 +181,10 @@ var ThreadSection = React.createClass({
     _goToThread(rowData){
         this.props.navigator.push({
             component: Conversation,
-            title: 'Profile Page',
+            //title: <Text>Muy bien</Text>,
+            //leftButtonIcon:require('image!rsz_back'),
+            navigationBarHidden: false,
+            //onLeftButtonPress: () => this.props.navigator.pop()
         })
     }
 

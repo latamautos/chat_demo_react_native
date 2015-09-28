@@ -31,7 +31,8 @@ var ChatApp = React.createClass({
                           navigator={this.props.navigator}
                           initialRoute={{
                             title: "Mensajes",
-                            component: ThreadsPage
+                            component: ThreadsPage,
+
                           }}/>
         );
     }
