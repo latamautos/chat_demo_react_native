@@ -3,42 +3,91 @@
 
 'use strict';
 var React = require('react-native');
+var RouteConstants = require('./js/constants/RouteConstants');
 var ThreadSection = require('./js/components/ThreadSection');
+var Conversation = require('./js/components/Conversation');
+var NavigationBar = require('./js/components/NavigationBar');
+var NavigatorNavigationBarStyles = require('NavigatorNavigationBarStyles');
+
 var {
     AppRegistry,
     StyleSheet,
     NavigatorIOS,
-    View
+    View,
+    Navigator,
+    Text,
+    TouchableHighlight
     } = React;
 
-var ThreadsPage = React.createClass({
+var NavigationBarRouteMapper = {
 
-    render() {
+    LeftButton: function (route, navigator, index, navState) {
+        navigator.pop()
         return (
-            <View style={styles.nav}><ThreadSection navigator={this.props.navigator}> </ThreadSection></View>
+            <TouchableHighlight onPress={() =>navigator.pop()}>
+                <Text >
+                    {route.id}
+                </Text>
+            </TouchableHighlight>
         );
-    }
-});
+    },
 
+    RightButton: function (route, navigator, index, navState) {
+
+        return (
+            <VibrancyView blurType="light" style={{ backgroundColor: 'transparent',}}><Text >
+                Estamos en la derecha
+            </Text></VibrancyView>
+        );
+    },
+
+    Title: function (route, navigator, index, navState) {
+        return (
+            <Text>
+                Soy un titulo
+            </Text>
+        );
+    },
+
+};
 
 var ChatApp = React.createClass({
 
+    renderScene: function (route, nav) {
+        switch (route.id) {
+            case RouteConstants.THREAD_LIST:
+                return <ThreadSection navigator={nav}> </ThreadSection>;
+            case RouteConstants.THREAD:
+                return <Conversation navigator={nav} route={route}/>;
+            default:
+                return <Conversation navigator={nav} route={route}/>;
+        }
+    },
+
     render() {
         return (
-            <NavigatorIOS ref="nav"
-                          itemWrapperStyle={styles.navWrap}
-                          style={styles.nav}
-                          navigator={this.props.navigator}
-                          initialRoute={{
-                            title: "Mensajes",
-                            component: ThreadsPage,
+            <Navigator
+                style={styles.appContainer}
+                renderScene={(route, nav)=>this.renderScene(route, nav)}
+                initialRoute={{ id: RouteConstants.THREAD_LIST, }}
+                navigationBar={
+          //<Navigator.NavigationBar
+          //  routeMapper={NavigationBarRouteMapper}
+          //  style={styles.navBar}
+          ///>
+           <NavigationBar routeMapper={NavigationBarRouteMapper}></NavigationBar>
+        }
+                />
 
-                          }}/>
         );
     }
 });
 
 var styles = StyleSheet.create({
+    navBar: {
+        //backgroundColor: "grey",
+        height: 60
+    },
     navWrap: {
         flex: 1,
     },

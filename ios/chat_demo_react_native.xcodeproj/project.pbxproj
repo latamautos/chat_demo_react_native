@@ -22,6 +22,10 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
+		25504AB61BBA011D00E7A6FA /* BlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25504AAE1BBA011D00E7A6FA /* BlurView.m */; };
+		25504AB71BBA011D00E7A6FA /* BlurViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 25504AB01BBA011D00E7A6FA /* BlurViewManager.m */; };
+		25504AB81BBA011D00E7A6FA /* VibrancyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25504AB31BBA011D00E7A6FA /* VibrancyView.m */; };
+		25504AB91BBA011D00E7A6FA /* VibrancyViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 25504AB51BBA011D00E7A6FA /* VibrancyViewManager.m */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 /* End PBXBuildFile section */
 
@@ -125,6 +129,14 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = chat_demo_react_native/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = chat_demo_react_native/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
+		25504AAD1BBA011D00E7A6FA /* BlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlurView.h; sourceTree = "<group>"; };
+		25504AAE1BBA011D00E7A6FA /* BlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlurView.m; sourceTree = "<group>"; };
+		25504AAF1BBA011D00E7A6FA /* BlurViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlurViewManager.h; sourceTree = "<group>"; };
+		25504AB01BBA011D00E7A6FA /* BlurViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlurViewManager.m; sourceTree = "<group>"; };
+		25504AB21BBA011D00E7A6FA /* VibrancyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VibrancyView.h; sourceTree = "<group>"; };
+		25504AB31BBA011D00E7A6FA /* VibrancyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VibrancyView.m; sourceTree = "<group>"; };
+		25504AB41BBA011D00E7A6FA /* VibrancyViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VibrancyViewManager.h; sourceTree = "<group>"; };
+		25504AB51BBA011D00E7A6FA /* VibrancyViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VibrancyViewManager.m; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -252,6 +264,28 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		25504AAC1BBA011D00E7A6FA /* RNBlur */ = {
+			isa = PBXGroup;
+			children = (
+				25504AAD1BBA011D00E7A6FA /* BlurView.h */,
+				25504AAE1BBA011D00E7A6FA /* BlurView.m */,
+				25504AAF1BBA011D00E7A6FA /* BlurViewManager.h */,
+				25504AB01BBA011D00E7A6FA /* BlurViewManager.m */,
+			);
+			path = RNBlur;
+			sourceTree = "<group>";
+		};
+		25504AB11BBA011D00E7A6FA /* RNVibrancy */ = {
+			isa = PBXGroup;
+			children = (
+				25504AB21BBA011D00E7A6FA /* VibrancyView.h */,
+				25504AB31BBA011D00E7A6FA /* VibrancyView.m */,
+				25504AB41BBA011D00E7A6FA /* VibrancyViewManager.h */,
+				25504AB51BBA011D00E7A6FA /* VibrancyViewManager.m */,
+			);
+			path = RNVibrancy;
+			sourceTree = "<group>";
+		};
 		78C398B11ACF4ADC00677621 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -288,6 +322,8 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				25504AAC1BBA011D00E7A6FA /* RNBlur */,
+				25504AB11BBA011D00E7A6FA /* RNVibrancy */,
 				13B07FAE1A68108700A75B9A /* chat_demo_react_native */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* chat_demo_react_nativeTests */,
@@ -528,6 +564,10 @@
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				25504AB61BBA011D00E7A6FA /* BlurView.m in Sources */,
+				25504AB71BBA011D00E7A6FA /* BlurViewManager.m in Sources */,
+				25504AB91BBA011D00E7A6FA /* VibrancyViewManager.m in Sources */,
+				25504AB81BBA011D00E7A6FA /* VibrancyView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

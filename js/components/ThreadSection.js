@@ -1,7 +1,10 @@
 var React = require('react-native');
 var ThreadStore = require('../stores/thread-store');
+var ThreadActions = require('../actions/ThreadActions');
 var Conversation = require('./Conversation');
 var UserStore = require('../stores/user-store');
+var RouteConstants = require('../constants/RouteConstants');
+
 
 var {
     AppRegistry,
@@ -24,6 +27,7 @@ var { Icon, } = require('react-native-icons');
 var styles = StyleSheet.create({
     threadContainer: {
         flex: 1,
+        marginTop: 42
     },
     threadItem: {
         height: 91,
@@ -105,32 +109,42 @@ var ThreadSection = React.createClass({
 
         var user = UserStore.getUser();
         var iAmTheCreator = rowData.creator.id == user.id && rowData.creator.type == user.type;
-        var lastMessage = rowData.messages[rowData.messages.length - 1]["text"];
+        var lastMessage = rowData.messages[rowData.messages.length - 1]
+        var lastMessageText = lastMessage["text"];
         var maxLenght = 60;
-        if (lastMessage.length > maxLenght) {
-            lastMessage = lastMessage.substring(0, maxLenght - 3) + "..."
+        if (lastMessageText.length > maxLenght) {
+            lastMessageText = lastMessageText.substring(0, maxLenght - 3) + "..."
         }
         return {
             interlocutor: iAmTheCreator ? rowData.recipient.name : rowData.creator.name,
             relationString: iAmTheCreator ? " respondió en " : " preguntó por ",
             listingName: rowData.listing.brand + " " + rowData.listing.model + " " + rowData.listing.year,
-            lastMessageCreatedAt: rowData.created_at,
-            lastMessage: lastMessage,
+            lastMessageCreatedAt: rowData.last_message_created_at,
+            lastMessage: lastMessageText,
+            showAsNew: (rowData.status == 'PENDING' &&
+            (lastMessage.creator_id != UserStore.getUser().id || lastMessage.creator_type != UserStore.getUser().type)),
             avatar: rowData.listing.avatar
 
         }
     },
 
-    iterateFunction: function (rowData) {
+    getStatusComponent(showAsNew){
+        if (showAsNew) {
+            return <View style={styles.status}></View>
+        }
+    },
+
+    iterateFunction: function (rowData, something, index) {
         var treatedThread = this._getTreatedThread(rowData);
         return (
 
-            <TouchableHighlight onPress={(rowData) =>this._goToThread(rowData)} underlayColor="#e5e5e5">
+            <TouchableHighlight onPress={() =>this._goToThread(rowData)} underlayColor="#e5e5e5">
+
                 <View>
+                    {<View style={index==0?styles.threadSeparator:{}}></View>}
                     <View style={styles.threadItem}>
                         <View style={styles.threadStatus}>
-                            <View style={styles.status}>
-                            </View>
+                            {this.getStatusComponent(treatedThread.showAsNew)}
                         </View>
                         <Image style={styles.threadAvatar} source={{uri: rowData.listing.avatar}}/>
                         <View style={styles.threadDetail}>
@@ -172,20 +186,17 @@ var ThreadSection = React.createClass({
 
         return (
 
+
             <ListView style={styles.threadContainer}
                       dataSource={this.state.dataSource}
                       renderRow={this.iterateFunction}
-                />
+                ></ListView>
         );
     },
     _goToThread(rowData){
-        this.props.navigator.push({
-            component: Conversation,
-            //title: <Text>Muy bien</Text>,
-            //leftButtonIcon:require('image!rsz_back'),
-            navigationBarHidden: false,
-            //onLeftButtonPress: () => this.props.navigator.pop()
-        })
+        ThreadActions.readThread(rowData.key)
+        this.props.navigator.push(
+            {id: RouteConstants.THREAD, thread_id: rowData.key})
     }
 
 });
