@@ -7,7 +7,7 @@ var EventEmitter = require('events').EventEmitter;
 
 var UserStore = assign(new EventEmitter(), {
     getUser: function () {
-        return {id: 1, type: 'user'}
+        return {id: 2, type: 'user'}
     }
 });
 

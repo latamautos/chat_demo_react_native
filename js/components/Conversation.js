@@ -67,7 +67,7 @@ var Conversation = React.createClass({
              */
 
             <Image
-                source={{uri: 'https://fd-files-production.s3.amazonaws.com/private/105043/108212/UwUFNd4o0PVSvca2K1Pqkg?X-Amz-Expires=300&X-Amz-Date=20150929T225919Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIA2QBI5WP5HA3ZEA/20150929/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=16e3cffab35ba3779ed5d3b4416687c1d900f5b503bfb825d37be862f4e1674a'}}
+                source={{uri: 'https://fd-files-production.s3.amazonaws.com/private/105043/108212/UwUFNd4o0PVSvca2K1Pqkg?X-Amz-Expires=300&X-Amz-Date=20150930T162101Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIA2QBI5WP5HA3ZEA/20150930/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=21c315e3d8be2a8a7cb55234616574187a6ecf3ff3855a607fcf65d7be468e40'}}
                 style={styles.imageContainer}>
                 <View style={{   bottom: 65,width: 377,
                     position: 'absolute'}}>

@@ -11,7 +11,7 @@ var {
     Text,
     View,
     StyleSheet,
-    TouchableHighlight
+    TouchableWithoutFeedback
     } = React;
 
 var NavigationBar = React.createClass({
@@ -49,14 +49,14 @@ var NavigationBar = React.createClass({
         return (<VibrancyView blurType="light" style={styles.navBar}>
             <View style={{width:50}}>
                 {isMain ? <View></View> :
-                    <TouchableHighlight onPress={() =>this.props.navigator.pop()} underlayColor="#e5e5e5">
+                    <TouchableWithoutFeedback onPress={() =>this.props.navigator.pop()} underlayColor="#e5e5e5">
                         <Text style={{fontSize: 18, paddingTop:5, color:"#eee"}}>
                             Atras
                         </Text>
-                    </TouchableHighlight> }
+                    </TouchableWithoutFeedback> }
             </View>
             <View style={{alignItems: 'center',marginHorizontal: 20}}>
-                <Text style={{fontSize: 18, color: isMain?'#222':'#eee',alignItems: 'center',paddingTop:isMain?10:0}}>
+                <Text style={{fontSize: 18, color: isMain?'#1E79FA':'#eee',alignItems: 'center',paddingTop:isMain?10:0, }}>
                     {isMain ? "Mensajes" : treatedThread.interlocutor
                     }
                 </Text>

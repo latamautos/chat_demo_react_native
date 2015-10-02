@@ -52,10 +52,11 @@ var changeThreadToReadStatus=function(threadId) {
     var lastMessage = thread.messages[Object.keys(thread.messages).length - 1];
     if (lastMessage.creator_id != UserStore.getUser().id ||
         lastMessage.creator_type != UserStore.getUser().type) {
+        var threadRef = new Firebase('https://latamautos-chat.firebaseio.com/ecuador/threads/' + threadId);
+        threadRef.update({status: 'READ'});
+        ThreadStore.emitChange()
     }
-    var threadRef = new Firebase('https://latamautos-chat.firebaseio.com/ecuador/threads/' + threadId);
-    threadRef.update({status: 'READ'});
-    ThreadStore.emitChange()
+
 }
 
 var ThreadStore = assign(new EventEmitter(), {
